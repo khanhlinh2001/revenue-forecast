@@ -1,0 +1,212 @@
+
+    <html>
+    <head>
+        <title>BÁO CÁO GIỜ CÔNG TRÊN BILL HÀNG THÁNG</title>
+        <script type="text/javascript" async
+          src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
+        <style>
+            /* Định dạng mục lục cố định */
+            #toc {
+                position: fixed;
+                top: 50px;
+                left: 20px;
+                width: 220px;
+                max-height: 80vh;
+                overflow-y: auto;
+                background: #f8f9fa;
+                padding: 15px;
+                border-radius: 8px;
+                box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+                font-family: Arial, sans-serif;
+            }
+
+            #toc ul {
+                list-style: none;
+                padding-left: 0;
+            }
+
+            #toc > ul > li {
+                margin-bottom: 10px;
+            }
+
+            #toc a {
+                text-decoration: none;
+                color: #007bff;
+                font-weight: bold;
+                display: block;
+                padding: 5px;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            #toc a:hover {
+                color: #fff;
+                background: #007bff;
+            }
+
+            #toc ul ul {
+                padding-left: 15px;
+                font-size: 14px;
+            }
+
+            #toc ul ul li {
+                margin-bottom: 5px;
+            }
+
+            html {
+                scroll-behavior: smooth;
+            }
+
+            body {
+                margin-left: 270px;
+                font-family: Arial, sans-serif;
+                line-height: 1.6;
+                max-width: 900px;
+            }
+
+            /* Ẩn tất cả nội dung ban đầu */
+            .section {
+                display: none;
+            }
+
+            /* Hiển thị phần đang được chọn */
+            .active {
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="toc">
+            <h3>Mục lục</h3>
+            <ul>
+                <li>
+                    <a onclick="showSection('tong-quan')">Tổng quan</a>
+                    <ul>
+                        <li><a onclick="showSection('gio-cong-tren-bill')">Giờ công trên BILL</a></li>
+                        <li><a onclick="showSection('tuong-quan-gio-cong-va-trung-binh-thuc-an-thuc-uong')">Tương quan giữa giờ công và trung bình thức ăn, thức uống</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a onclick="showSection('ket-qua-gio-cong-tren-bill')">Kết quả giờ công trên BILL</a>
+                    <ul>
+                        <li><a onclick="showSection('thang-1-nam-2025')">Tháng 1 năm 2025</a></li>
+                        <li><a onclick="showSection('thang-2-nam-2025')">Tháng 2 năm 2025</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a onclick="showSection('ket-qua-tuong-quan')">Kết quả mối tương quan</a>
+                    <ul>
+                        <li><a onclick="showSection('thang-1-2025')">Tháng 1 - 2025</a></li>
+                        <li><a onclick="showSection('thang-2-2025')">Tháng 2 - 2025</a></li>
+                    </ul>
+                </li>
+                <li><a onclick="showSection('ket-luan')">Kết luận</a></li>
+            </ul>
+        </div>
+
+        <div id="tong-quan" class="section">
+            <h2>Tổng quan</h2>
+            <p>Báo cáo giờ công trên BILL hàng tháng sẽ bao gồm 2 phần chính là:</p>
+            <ul>
+                <li>Giờ công trên BILL: Mục đích chính là theo dõi chất lượng của BILL để điều chỉnh bố trí nhân sự đảm báo chất lượng dịch vụ cho khách hàng/</li>
+                <li>Tương quan giữa giờ công và trung bình thức ăn, thức uống: Mục đích chính là biết được khung giờ có mối tương quan tới trung bình ngành hàng, để tập trung nhân sự vào chỗ đó.
+                Bên cạnh đó, trả lời được câu hỏi tăng 1 giờ công thì trung bình ngành hàng tăng bao nhiêu</li>
+            </ul>
+        </div>
+
+        <div id="gio-cong-tren-bill" class="section">
+            <h2>Giờ công trên BILL</h2>
+            <p><strong>Công thức:</strong> Giờ công trên BILL = \( \frac{\text{Giờ công nhân sự}}{\text{số lượng BILL}} \) (Khoảng thời gian được sử dụng cho chỉ số là 2 tiếng trong ngày).</p>
+            <p>Trong đó,<br>
+                - Giờ công nhân sự là tổng thời gian nhân sự phục vụ khách. <br>
+                + Công thức: Giờ công nhân sự = FULL-TIME + PART-TIME - ĐÀO TẠO - phát VOUCHER - dọn dẹp phòng cuối ngày <br>
+                (Tính bằng cách mỗi phòng dọn 30 phút => Số phòng sử dụng trong ngày * 30 phút = Tổng giờ công dọn dẹp phòng cuối ngày) <br>
+                - Số lượng BILL là số BILL có tại thời điểm thực tế trong vòng 2 tiếng. Lưu ý chỉ khi BILL đó trên 60 phút trong khung thời gian 2 tiếng thì mới được tính vào là 1 BILL.
+            </p>
+
+            <p><strong>Mục đích:</strong> Giờ công trên BILL là để biết được chất lượng của một BILL đã được đạt chuẩn đủ giờ công chưa. Nếu chỉ số quá thấp khả năng sẽ khiến cho TBB không đạt chuẩn, còn nếu quá cao thì công ty sẽ bị lãng phí nhân sự.
+            Giữ chỉ số ở mức vừa phải đem lại tối ưu trong sự quản lí và tăng doanh thu.</p>
+
+            <p><strong>Quá khứ:</strong> <br>
+            - Các khung giờ 18-20 giờ và 02-04 giờ thì giờ công trên BILL thường rất cao. <br>
+            + Nguyên nhân đối với 18-20 giờ, đây là khung chuyển ca thường khách sẽ rất ít tới có thể là đang đi tăng 1 ở các quán ăn còn đối với karaoke sẽ thường là tăng 2. Do vậy, lượng BILL thời điểm này là rất thấp.
+            Không chỉ vậy, đây là thời điểm cũng cần phải bố trí nhân viên để chuẩn bị set up phục vụ khách tốt hơn => Việc cắt giảm nhân sự ở thời điểm này khó khăn với quản lí. Kết hợp cả 2 điều trên khiến cho chỉ số bị dội lên rất cao.<br>
+            + Nguyên nhân đối với 02-04 giờ, đây là khung kết thúc ca thường khách chủ yếu là ra về. Nhưng phải có nhân viên ở trực và dọn dẹp phòng để phục vụ cho ngày tiếp theo, việc cắt giảm nhân sự tại thời điểm này cũng sẽ ảnh hưởng đến vệ sinh của phòng.
+            Kết hợp cả 2 điều trên cũng khiến cho chỉ số bị dội lên rất cao. <br>
+            - Các khung giờ 22-24 giờ thì giờ công trên BILL thường rất thấp. <br>
+            + Nguyên nhân, đây là khung giờ cao điểm khách rất đông. Mặc dù nhân viên nhiều nhưng vẫn bị thiếu => Các chi nhánh thiếu cần tăng nhân sự để phục vụ khách.
+            </p>
+
+            <p><strong>Hiện trạng:</strong> <br>
+            - Các khung giờ 02-04 giờ đã không còn bị quá cao nữa bởi vì đã trừ ra giờ công nhân viên dùng để dọn dẹp. Nhưng khung từ 18-20 giờ thì giờ công vẫn còn cao và từ 22-24 giờ lại bị thiếu giờ công (chỉ số thấp hơn 3).
+            </p>            
+        </div>
+
+        <div id="tuong-quan-gio-cong-va-trung-binh-thuc-an-thuc-uong" class="section">
+            <h2>Tương quan giữa giờ công và trung bình thức ăn, thức uống</h2>
+            <p>Nội dung Tương quan giữa giờ công và trung bình thức ăn, thức uống...</p>
+        </div>
+
+        <div id="ket-qua-gio-cong-tren-bill" class="section">
+            <h2>Kết quả giờ công trên BILL</h2>
+            <p>Nội dung Kết quả giờ công trên BILL...</p>
+        </div>
+
+        <div id="thang-1-nam-2025" class="section">
+            <h2>Tháng 1 năm 2025</h2>
+            <iframe src="report_of_working_over_bill.html" width="150%" height="100%" style="border:none;"></iframe>
+        </div>
+
+        </div>
+
+        <div id="thang-2-nam-2025" class="section">
+            <h2>Tháng 2 năm 2025</h2>
+            <p>Kết quả tháng 2 năm 2025 sẽ được cập nhật khi DATA nhận được dữ liệu đầy đủ....</p>
+        </div>
+
+        <div id="ket-qua-tuong-quan" class="section">
+            <h2>Kết quả mối tương quan</h2>
+            <p>Nội dung Kết quả mối tương quan...</p>
+        </div>
+
+        <div id="thang-1-2025" class="section">
+            <h2>Tháng 1 - 2025</h2>
+            <iframe src="correlation_coefficient.html" width="150%" height="100%"></iframe>
+
+        </div>
+
+        <div id="thang-2-2025" class="section">
+            <h2>Tháng 2 - 2025</h2>
+            <p>Kết quả tháng 2 - 2025 sẽ được cập nhật khi DATA nhận được dữ liệu đầy đủ....</p>
+        </div>
+
+        <div id="ket-luan" class="section">
+            <h2>Kết luận</h2>
+            <p>Nội dung kết luận...</p>
+        </div>
+
+        <script>
+            function showSection(id) {
+                // Ẩn tất cả các phần
+                var sections = document.querySelectorAll('.section');
+                sections.forEach(function(section) {
+                    section.classList.remove('active');
+                });
+
+                // Hiển thị phần được chọn
+                var selectedSection = document.getElementById(id);
+                if (selectedSection) {
+                    selectedSection.classList.add('active');
+                }
+            }
+
+            // Hiển thị phần đầu tiên khi tải trang
+            document.addEventListener("DOMContentLoaded", function() {
+                showSection('tong-quan');
+            });
+        </script>
+    </body>
+
+    </html>
+    
