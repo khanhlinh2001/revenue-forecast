@@ -109,26 +109,27 @@
             <h2>Tổng quan</h2>
             <p>Báo cáo giờ công trên BILL hàng tháng sẽ bao gồm 2 phần chính là:</p>
             <ul>
-                <li>Giờ công trên BILL: Mục đích chính là theo dõi chất lượng của BILL để điều chỉnh bố trí nhân sự đảm báo chất lượng dịch vụ cho khách hàng/</li>
-                <li>Tương quan giữa giờ công và trung bình thức ăn, thức uống: Mục đích chính là biết được khung giờ có mối tương quan tới trung bình ngành hàng, để tập trung nhân sự vào chỗ đó.
-                Bên cạnh đó, trả lời được câu hỏi tăng 1 giờ công thì trung bình ngành hàng tăng bao nhiêu</li>
+                <li>Giờ công trên BILL: Mục đích chính là theo dõi chất lượng của BILL để điều chỉnh bố trí nhân sự đảm báo chất lượng dịch vụ cho khách hàng.</li>
+                <li>Tương quan giữa giờ công và trung bình thức ăn, thức uống: Mục đích chính là biết được khung giờ có mối tương quan tới trung bình tiền thức ăn thức uống, để tập trung nhân sự vào chỗ đó, tránh lãng phí nhân sự.
+                Bên cạnh đó, trả lời được câu hỏi tăng 1 giờ công thì trung bình tiền thức ăn thức uống tăng bao nhiêu, để xem xét về việc tăng giờ công như vậy có bù vào được chi phí trả lương cho nhân sự hay không. Chuẩn đang sử dụng hiện tại là bé hơn 3 thì thấp.</li>
             </ul>
         </div>
 
         <div id="gio-cong-tren-bill" class="section">
             <h2>Giờ công trên BILL</h2>
-            <p><strong>Công thức:</strong> Giờ công trên BILL = \( \frac{\text{Giờ công nhân sự}}{\text{số lượng BILL}} \) (Khoảng thời gian được sử dụng cho chỉ số là 2 tiếng trong ngày).</p>
+            <p><strong>Công thức:</strong> Giờ công trên BILL = \( \frac{\text{Giờ công nhân sự}}{\text{Số lượng BILL}} \) (Khoảng thời gian được sử dụng cho chỉ số là 2 tiếng trong ngày).</p>
             <p>Trong đó,<br>
                 - Giờ công nhân sự là tổng thời gian nhân sự phục vụ khách. <br>
                 + Công thức: Giờ công nhân sự = FULL-TIME + PART-TIME - ĐÀO TẠO - phát VOUCHER - dọn dẹp phòng cuối ngày <br>
-                (Tính bằng cách mỗi phòng dọn 30 phút => Số phòng sử dụng trong ngày * 30 phút = Tổng giờ công dọn dẹp phòng cuối ngày) <br>
-                - Số lượng BILL là số BILL có tại thời điểm thực tế trong vòng 2 tiếng. Lưu ý chỉ khi BILL đó trên 60 phút trong khung thời gian 2 tiếng thì mới được tính vào là 1 BILL.
+                (Tính bằng cách mỗi phòng dọn 30 phút => Số phòng sử dụng trong ngày * 30 phút = Tổng giờ công dọn dẹp phòng cuối ngày. Lưu ý, đối với khung giờ 00-02 giờ sẽ trừ bớt 1/3 giờ công, còn từ 02-04 giờ sẽ trừ bớt 2/3.
+                Bời vì vào khung 00-02 giờ bill cũng còn không nhiều, nên dọn dẹp từ thời điểm này là vừa tiết kiệm thời gian và nhân sự.) <br>
+                - Số lượng BILL là số BILL có tại thời điểm thực tế trong vòng 2 tiếng. Lưu ý, chỉ khi BILL đó trên 60 phút trong khung thời gian 2 tiếng thì mới được tính vào là 1 BILL.
             </p>
 
             <p><strong>Mục đích:</strong> Giờ công trên BILL là để biết được chất lượng của một BILL đã được đạt chuẩn đủ giờ công chưa. Nếu chỉ số quá thấp khả năng sẽ khiến cho TBB không đạt chuẩn, còn nếu quá cao thì công ty sẽ bị lãng phí nhân sự.
             Giữ chỉ số ở mức vừa phải đem lại tối ưu trong sự quản lí và tăng doanh thu.</p>
 
-            <p><strong>Quá khứ:</strong> <br>
+            <p><strong>Vấn đề quá khứ:</strong> <br>
             - Các khung giờ 18-20 giờ và 02-04 giờ thì giờ công trên BILL thường rất cao. <br>
             + Nguyên nhân đối với 18-20 giờ, đây là khung chuyển ca thường khách sẽ rất ít tới có thể là đang đi tăng 1 ở các quán ăn còn đối với karaoke sẽ thường là tăng 2. Do vậy, lượng BILL thời điểm này là rất thấp.
             Không chỉ vậy, đây là thời điểm cũng cần phải bố trí nhân viên để chuẩn bị set up phục vụ khách tốt hơn => Việc cắt giảm nhân sự ở thời điểm này khó khăn với quản lí. Kết hợp cả 2 điều trên khiến cho chỉ số bị dội lên rất cao.<br>
@@ -139,13 +140,38 @@
             </p>
 
             <p><strong>Hiện trạng:</strong> <br>
-            - Các khung giờ 02-04 giờ đã không còn bị quá cao nữa bởi vì đã trừ ra giờ công nhân viên dùng để dọn dẹp. Nhưng khung từ 18-20 giờ thì giờ công vẫn còn cao và từ 22-24 giờ lại bị thiếu giờ công (chỉ số thấp hơn 3).
-            </p>            
+            - Các khung giờ 02-04 giờ đã không còn bị quá cao nữa bởi vì đã trừ ra giờ công nhân viên dùng để dọn dẹp. Nhưng khung từ 18-20 giờ thì giờ công vẫn còn cao và từ 22-24 giờ lại bị thiếu giờ công (chỉ số thấp hơn 3). <br>
+            - Đặc biệt, đã có dấu hiệu của việc ở khung giờ ca sáng bị thiếu giờ công trên BILL, do BILL ca sáng đã bắt đầu có dấu hiệu cao. Bên cạnh đó, giờ công trên BILL ở khung 00-02 vào cuối tuần bị thiếu có khả năng do cuối tuần thường sẽ đi trễ hơn.<br>
+            </p>
         </div>
 
         <div id="tuong-quan-gio-cong-va-trung-binh-thuc-an-thuc-uong" class="section">
             <h2>Tương quan giữa giờ công và trung bình thức ăn, thức uống</h2>
-            <p>Nội dung Tương quan giữa giờ công và trung bình thức ăn, thức uống...</p>
+            <p><strong>1. Hệ số tương quan:</strong> Thể hiện mối tương quan giữa 2 thuộc tính. Ví dụ, x tương quan với y => Khi x tăng thì y tăng và khi x giảm thì y giảm.</p>
+            <p><strong>Mục đích:</strong> Tìm ra mối tương quan giúp mình tập trung chính xác nhất là nên tăng giảm biến nào để tránh tăng giảm những chỗ không cần thiết => Tiết kiệm.
+            Đối với trường hợp thực tế, mục đích là để biết được <strong>Khi tăng giờ công ở thời điểm này thì doanh thu ở thời điểm đó có tăng theo hay không</strong>. </p>
+            <p><strong>Công thức:</strong>  Hệ số tương quan =  \( \frac{\sum{ (x - \bar{x}) (y - \bar{y}) }} {\sqrt{\sum{ (x - \bar{x})^2}\sum{ (y - \bar{y})^2 }}} \) </p>
+            <p>Trong đó,<br>
+                - \(  x \): giá trị từng cột số của biến x <br>
+                - \(  y \): giá trị từng cột số của biến x <br>
+                - \(  \bar{x} \): giá trị trung bình từng cột số của biến x <br>
+                - \(  \bar{y} \): giá trị trung bình từng cột số của biến y <br>
+            </p>
+            <p><strong>Diễn giải ý nghĩa hệ só:</strong><br>
+                - Hệ số tương quan có giá trị từ -1 tới 1. <br>
+                - Khi hệ số tương quan = 1 => x tương quan dương mạnh với y => Khi x tăng thì y tăng. Khi hệ số tương quan = -1 => x tương quan dương âm với y => Khi x tăng thì y giảm. Khi hệ số tương quan = 0 => x không tương quan y => Không có mối quan hệ giữa x và y.<br>
+                - Hệ số tương quan càng gần về 1 hoặc trừ 1 thì càng tốt. Hệ số tương quan càng gần về 0 thì càng không tốt.
+            </p>
+            <iframe src="correlation_coefficient_meaning.html" width="60%" height="25%"></iframe>
+            <p><strong>2. Hồi qui tuyến tính:</strong> Thể hiện khi tăng một giờ công thì trung bình tiền thức ăn thức uống tăng lên bao nhiêu bằng việc sử dụng hệ số góc của phương trình: y = ax + b. Trong đó, a là hệ số góc. </p>
+            <p><strong>Hiện trạng:</strong><br>
+                - Ở các khung giờ ca sáng hệ số tương quan xấp xỉ = 0 => Giờ công không ảnh hương tới trung bình thức ăn, thức uống => Không cần tập trung tăng giờ công tại thời điểm này. <br>
+                - Ở các khung giờ ca tối hệ số tương quan cao hơn giao động khoảng 0.4 => Giờ công nhân viên có ảnh hưởng tới trung bình thức ăn thức uống 
+                => Mặc dù ảnh hưởng rất ít nhưng tăng giờ công ở những thời gian này sẽ có khả năng giúp tăng doanh thu. <br>
+                - Ở các khung giờ ca đêm lại có hệ sổ tương quan cao nhất
+                => Giờ công ảnh hưởng tới việc mua thức ăn thức uống. Nhưng khi tập trung nhân viên nhiều ở đây rất dễ bị lãng phí nhân viên, vì khách tới thời điểm này là khá hiếm, nếu khách không tới thì khả năng cao là công ty bị dư nhân sự, không tối ưu cho việc quản lí.
+            </p>
+            <p><strong>Lưu ý:</strong> Phương pháp này cần sử dụng càng nhiều dữ liệu càng tốt để có độ tin cậy cao. Do vậy, Data sử dụng dữ liệu từ đầu năm 2024 cho tới thời điểm hiện tại.</p>
         </div>
 
         <div id="ket-qua-gio-cong-tren-bill" class="section">
@@ -155,7 +181,7 @@
 
         <div id="thang-1-nam-2025" class="section">
             <h2>Tháng 1 năm 2025</h2>
-            <iframe src="report_of_working_over_bill.html" width="150%" height="100%" style="border:none;"></iframe>
+            <iframe src="working_over_bill.html" width="150%" height="100%" style="border:none;"></iframe>
         </div>
 
         </div>
@@ -172,8 +198,9 @@
 
         <div id="thang-1-2025" class="section">
             <h2>Tháng 1 - 2025</h2>
-            <iframe src="correlation_coefficient.html" width="150%" height="100%"></iframe>
-
+            <iframe src="correlation_coefficient.html" width="150%" height="120%"></iframe>
+            <iframe src="linear_regression.html" width="150%" height="60%"></iframe>
+            <iframe src="working_to_money.html" width="150%" height="120%"></iframe>
         </div>
 
         <div id="thang-2-2025" class="section">
