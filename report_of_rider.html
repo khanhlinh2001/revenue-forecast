@@ -1,0 +1,166 @@
+
+    <html>
+    <head>
+        <title>BÁO CÁO CUỐC XE HÀNG THÁNG</title>
+        <script type="text/javascript" async
+          src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
+        <style>
+            /* Định dạng mục lục cố định */
+            #toc {
+                position: fixed;
+                top: 50px;
+                left: 20px;
+                width: 220px;
+                max-height: 80vh;
+                overflow-y: auto;
+                background: #f8f9fa;
+                padding: 15px;
+                border-radius: 8px;
+                box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+                font-family: Arial, sans-serif;
+            }
+
+            #toc ul {
+                list-style: none;
+                padding-left: 0;
+            }
+
+            #toc > ul > li {
+                margin-bottom: 10px;
+            }
+
+            #toc a {
+                text-decoration: none;
+                color: #007bff;
+                font-weight: bold;
+                display: block;
+                padding: 5px;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            #toc a:hover {
+                color: #fff;
+                background: #007bff;
+            }
+
+            #toc ul ul {
+                padding-left: 15px;
+                font-size: 14px;
+            }
+
+            #toc ul ul li {
+                margin-bottom: 5px;
+            }
+
+            html {
+                scroll-behavior: smooth;
+            }
+
+            body {
+                margin-left: 270px;
+                font-family: Arial, sans-serif;
+                line-height: 1.6;
+                max-width: 900px;
+            }
+
+            /* Ẩn tất cả nội dung ban đầu */
+            .section {
+                display: none;
+            }
+
+            /* Hiển thị phần đang được chọn */
+            .active {
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="toc">
+            <h3>Mục lục</h3>
+            <ul>
+                <li>
+                    <a onclick="showSection('tong-quan')">Tổng quan</a>
+                </li>
+                <li>
+                    <a onclick="showSection('Map các cuốc xe')">Map các cuốc xe</a>
+                </li>
+                <li>
+                    <a onclick="showSection('ket-luan')">Kết luận</a>
+                    <ul>
+                        <li><a onclick="showSection('thang-1-2025')">Tháng 1 - 2025</a></li>
+                        <li><a onclick="showSection('thang-2-2025')">Tháng 2 - 2025</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div id="tong-quan" class="section">
+            <h2>Tổng quan</h2>
+            <p>Báo cáo cuốc xe hàng tháng sẽ bao gồm 2 phần chính là:</p>
+            <ul>
+                <li><strong>Map của cuốc xe:</strong> Thể hiện các điểm khách bắt xe từ đâu đến tới ICOOL, vẽ bán kính 3km xung quanh các chi nhánh của ICOOL để thấy được dễ dàng những phạm vi ngoài bán kính có nhiều không 
+                => Xem xét để BGD đưa ra quyết định mở địa điểm mới.</li>
+                <li><strong>Kết luận:</strong> Đưa những kết luận tóm gọn và recommend địa điểm theo từng tháng của DATA.</li>
+            </ul>
+        </div>
+
+        <div id="Map các cuốc xe" class="section">
+            <h2>BIỂU ĐỒ CHI TIẾT TỌA ĐỘ CUỐC XE</h2>
+            <p>🔍 Có thể tương tác với hình dễ dàng, chọn các khung thời gian phù hợp vào nhu cầu.</p>
+            <iframe src="map_total.html" width="150%" height="120%"></iframe>
+        </div>
+
+        </div>
+
+        <div id="thang-1-2025" class="section">
+            <h2>Tháng 1 - 2025</h2>
+            <p>Tổng quát tháng 1 năm 2025, nhìn chung tất cả các chi nhánh ở HCM. Mặc dù điểm này nằm ngoài bán kính của chi nhánh kia nhưng đa số sẽ nằm trong vòng tròn của chi nhánh khách. 
+            Một số điểm nằm ngoài tất cả các chi nhánh nhiều nhất là khu vực GÒ VẤP như đường Dương Quảng Hàm, Nguyễn Văn Lượng; 
+            một số điểm nằm ở khu vực Hiệp Bình Chánh (Thủ Đức); Bình Qưới (Bình Thạnh); khúc Nguyễn Xiển (Quận 9).</p>
+        </div>
+
+        <div id="thang-2-2025" class="section">
+            <h2>Tháng 2 - 2025</h2>
+            <p>Kết quả tháng 2 - 2025 sẽ được cập nhật khi DATA nhận được dữ liệu đầy đủ....</p>
+        </div>
+        <script>
+            function showSection(id) {
+                // Ẩn tất cả các phần
+                var sections = document.querySelectorAll('.section');
+                sections.forEach(function(section) {
+                    section.classList.remove('active');
+                });
+
+                // Hiển thị phần được chọn
+                var selectedSection = document.getElementById(id);
+                if (selectedSection) {
+                    selectedSection.classList.add('active');
+                }
+            }
+
+            // Hiển thị phần đầu tiên khi tải trang
+            document.addEventListener("DOMContentLoaded", function() {
+                showSection('tong-quan');
+            });
+        </script>
+        <script>
+            const PASSWORD = "icooldata_1234";
+
+            document.addEventListener("DOMContentLoaded", function () {
+                let inputPassword = prompt("Vui lòng nhập mật khẩu để xem báo cáo CUỐC XE hàng tháng từ DATA:");
+                if (inputPassword === PASSWORD) {
+                    document.body.style.display = "block";
+                    showSection('tong-quan');
+                } else {
+                    alert("Sai mật khẩu. Bạn không có quyền truy cập.");
+                    document.body.style.display = "none";
+                }
+            });
+        </script>
+
+    </body>
+
+    </html>
+    
