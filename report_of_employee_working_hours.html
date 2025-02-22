@@ -109,9 +109,9 @@
             <p>Báo cáo giờ công trên BILL hàng tháng sẽ bao gồm 2 phần chính là:</p>
             <ul>
                 <li>Giờ công trên BILL: Mục đích chính là theo dõi chất lượng của BILL để điều chỉnh bố trí nhân sự đảm báo chất lượng dịch vụ cho khách hàng.</li>
+                <li>🔥 MỤC TIÊU: SÁNG KHÔNG QUÁ 5, TỐI KHÔNG DƯỚI 3.</li>
                 <li>Tương quan giữa giờ công và trung bình tiền thức ăn, thức uống: Mục đích chính là biết được khung giờ có mối tương quan tới trung bình tiền thức ăn thức uống, để tập trung nhân sự vào chỗ đó, tránh lãng phí nhân sự.
                 Bên cạnh đó, trả lời được câu hỏi tăng 1 giờ công thì trung bình tiền thức ăn thức uống tăng bao nhiêu, để xem xét về việc tăng giờ công như vậy có bù vào được chi phí trả lương cho nhân sự hay không. <br> </li>
-                <li>Mốc làm chuẩn đang sử dụng hiện tại là bé hơn 3 thì thấp => Cần cải thiện tại thời điểm đó.</li>
             </ul>
         </div>
 
@@ -120,8 +120,9 @@
             <p><strong>Công thức:</strong> Giờ công trên BILL = \( \frac{\text{Giờ công nhân sự}}{\text{Số lượng BILL}} \) (Khoảng thời gian được sử dụng cho chỉ số là 2 tiếng trong ngày).</p>
             <p>Trong đó,<br>
                 - Giờ công nhân sự là tổng thời gian nhân sự phục vụ khách. <br>
-                + Công thức: Giờ công nhân sự = FULL-TIME + PART-TIME - ĐÀO TẠO - phát VOUCHER - dọn dẹp phòng cuối ngày <br>
-                (Tính bằng cách mỗi phòng dọn 30 phút => Số phòng sử dụng trong ngày * 30 phút = Tổng giờ công dọn dẹp phòng cuối ngày. Lưu ý, đối với khung giờ 00-02 giờ sẽ trừ bớt 1/3 giờ công, còn từ 02-04 giờ sẽ trừ bớt 2/3.
+                + Công thức: Giờ công nhân sự = FULL-TIME + PART-TIME - ĐÀO TẠO - phát VOUCHER - DỌN DẸP <br>
+                (Tính bằng cách mỗi phòng dọn 30 phút => Số phòng sử dụng trong ngày * 30 phút = Tổng giờ công dọn dẹp phòng cuối ngày.
+                Lưu ý, đối với khung giờ 00-02 giờ sẽ trừ bớt 1/3 giờ công, còn từ 02-04 giờ sẽ trừ bớt 2/3 giờ công.
                 Bởi vì vào khung 00-02 giờ bill cũng còn không nhiều, nên dọn dẹp từ thời điểm này là vừa tiết kiệm thời gian và nhân sự.) <br>
                 - Số lượng BILL là số BILL có tại thời điểm thực tế trong vòng 2 tiếng. Lưu ý, chỉ khi BILL đó trên 60 phút trong khung thời gian 2 tiếng thì mới được tính vào là 1 BILL.
             </p>
@@ -165,8 +166,8 @@
             <iframe src="correlation_coefficient_meaning.html" width="60%" height="25%"></iframe>
             <p><strong>2. Hồi qui tuyến tính:</strong> Thể hiện khi tăng một giờ công thì trung bình tiền thức ăn thức uống tăng lên bao nhiêu bằng việc sử dụng hệ số góc của phương trình: y = ax + b. Trong đó, a là hệ số góc. </p>
             <p><strong>Hiện trạng:</strong><br>
-                - Ở các khung giờ ca sáng hệ số tương quan xấp xỉ = 0 => Giờ công không ảnh hương tới trung bình thức ăn, thức uống => Không cần tập trung tăng giờ công tại thời điểm này. <br>
-                - Ở các khung giờ ca tối hệ số tương quan cao hơn giao động khoảng 0.4 => Giờ công nhân viên có ảnh hưởng tới trung bình thức ăn thức uống 
+                - Ở các khung giờ ca sáng hệ số tương quan xấp xỉ = 0 => Giờ công không ảnh hưởng tới trung bình thức ăn, thức uống => Không cần tập trung tăng giờ công tại thời điểm này.<br>
+                - Ở các khung giờ ca tối hệ số tương quan cao hơn giao động khoảng 0.4 => Giờ công nhân viên có ảnh hưởng tới trung bình tiền thức ăn thức uống
                 => Mặc dù ảnh hưởng rất ít nhưng tăng giờ công ở những thời gian này sẽ có khả năng giúp tăng doanh thu. <br>
                 - Ở các khung giờ ca đêm lại có hệ sổ tương quan cao nhất
                 => Giờ công ảnh hưởng tới việc mua thức ăn thức uống. Nhưng khi tập trung nhân viên nhiều ở đây rất dễ bị lãng phí nhân viên, vì khách tới thời điểm này là khá hiếm, nếu khách không tới thì khả năng cao là công ty bị dư nhân sự, không tối ưu cho việc quản lí.
@@ -228,6 +229,36 @@
                 showSection('tong-quan');
             });
         </script>
+        <script>
+            const PASSWORD = "icooldata_1234";
+
+            document.addEventListener("DOMContentLoaded", function () {
+                let inputPassword = prompt("Vui lòng nhập mật khẩu để xem báo cáo GIỜ CÔNG TRÊN BILL hàng tháng từ DATA:");
+                if (inputPassword === PASSWORD) {
+                    document.body.style.display = "block";
+                    showSection('tong-quan');
+                } else {
+                    alert("Sai mật khẩu. Bạn không có quyền truy cập.");
+                    document.body.style.display = "none";
+                }
+            });
+        </script>
+
+        <script>
+            const PASSWORD = "icooldata_1234";
+
+            document.addEventListener("DOMContentLoaded", function () {
+                let inputPassword = prompt("Vui lòng nhập mật khẩu để xem báo cáo GIỜ CÔNG TRÊN BILL hàng tháng từ DATA:");
+                if (inputPassword === PASSWORD) {
+                    document.body.style.display = "block";
+                    showSection('tong-quan');
+                } else {
+                    alert("Sai mật khẩu. Bạn không có quyền truy cập.");
+                    document.body.style.display = "none";
+                }
+            });
+        </script>
+
     </body>
 
     </html>
