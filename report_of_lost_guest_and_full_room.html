@@ -1,0 +1,262 @@
+
+    <html>
+    <head>
+        <title>BÁO CÁO FULL-phòng HÀNG THÁNG</title>
+        <script type="text/javascript" async
+          src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
+        <style>
+            /* Định dạng mục lục cố định */
+            #toc {
+                position: fixed;
+                top: 50px;
+                left: 20px;
+                width: 220px;
+                max-height: 80vh;
+                overflow-y: auto;
+                background: #f8f9fa;
+                padding: 15px;
+                border-radius: 8px;
+                box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+                font-family: Arial, sans-serif;
+            }
+
+            #toc ul {
+                list-style: none;
+                padding-left: 0;
+            }
+
+            #toc > ul > li {
+                margin-bottom: 10px;
+            }
+
+            #toc a {
+                text-decoration: none;
+                color: #007bff;
+                font-weight: bold;
+                display: block;
+                padding: 5px;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            #toc a:hover {
+                color: #fff;
+                background: #007bff;
+            }
+
+            #toc ul ul {
+                padding-left: 15px;
+                font-size: 14px;
+            }
+
+            #toc ul ul li {
+                margin-bottom: 5px;
+            }
+
+            html {
+                scroll-behavior: smooth;
+            }
+
+            body {
+                margin-left: 270px;
+                font-family: Arial, sans-serif;
+                line-height: 1.6;
+                max-width: 900px;
+            }
+
+            /* Ẩn tất cả nội dung ban đầu */
+            .section {
+                display: none;
+            }
+
+            /* Hiển thị phần đang được chọn */
+            .active {
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="toc">
+            <h3>Mục lục</h3>
+            <ul>
+                <li>
+                    <a onclick="showSection('tong-quan')">Tổng quan</a>
+                    <ul>
+                        <li><a onclick="showSection('FULL-phong')">FULL phòng</a></li>
+                        <li><a onclick="showSection('bo-tua')">Bỏ tua</a></li>
+                        <li><a onclick="showSection('bo-tua-tren-FULL-phong')">Tỉ lệ bỏ tua trên FULL phòng</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a onclick="showSection('ket-qua-FULL-phòng-va-bo-tua')">Kết quả thống kê số lượng FULL phòng và bỏ tua</a>
+                    <ul>
+                        <li><a onclick="showSection('thang-1-nam-2025')">Tháng 1 năm 2025</a></li>
+                        <li><a onclick="showSection('thang-2-nam-2025')">Tháng 2 năm 2025</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a onclick="showSection('ket-qua-bo-tua-tren-FULL-phong')">Kết quả tỉ lệ bỏ tua trên FULL phòng</a>
+                    <ul>
+                        <li><a onclick="showSection('thang-1-2025')">Tháng 1 - 2025</a></li>
+                        <li><a onclick="showSection('thang-2-2025')">Tháng 2 - 2025</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div id="tong-quan" class="section">
+            <h2>Tổng quan</h2>
+            <p>Báo cáo FULL phòng và bỏ tua hàng tháng sẽ bao gồm 3 phần chính là:</p>
+            <ul>
+                <li><strong>FULL phòng</strong>: Mục đích chính là tìm ra qui luật FULL phòng, đưa ra dự báo sớm để chi nhánh có thể chuẩn bị giờ cao điểm phục vụ khách tốt hơn.</li>
+                <li><strong>Bỏ tua</strong>: Thống kê số lượng khách bỏ tua HOTLINE và VÃNG LAI để báo cáo tình hình kịp thời.</li>
+                <li><strong>Số lượt bỏ tua / Số lần FULL phòng</strong>: Tỉ lệ này cho biết được 1 lần chi nhánh FULL phòng thì công ty sẽ bị mất đi bao nhiêu BILL.
+                Mục đích chính là xem xét nên mở thêm bao nhiêu phòng cho chi nhánh để không bị mất khách.</li>
+                <li><strong>Trung bình Doanh thu / Độ rủi ro (phần thêm)</strong>: Tỉ lệ này cho biết được 1 phần rủi ro mình phải chịu,
+                sẽ tạo ra được bao nhiêu phần doanh thu. Do vậy mà dùng để đo lường được công ty nên đầu tư phòng vào chi nhánh nào sẽ là tốt nhất.</li>
+            </ul>
+        </div>
+
+        <div id="FULL-phong" class="section">
+            <h2>FULL phòng</h2>
+            <p><strong>Cách tính:</strong><br>
+                1. Tìm ra số phòng phát sinh ra BILL trong 1 tháng (Đây là số phòng được xem như tối đa - coi nó là số phòng của chi nhánh đó luôn), nếu số BILL ngay tại thời điểm nào đó của chi nhánh bằng với số phòng tối đa
+                => Chi nhánh đó FULL phòng tại thời điểm đó. <br>
+                2. Đếm số lần FULL phòng trong ngày <br>
+                - Lần đầu tiên FULL phòng trong ngày => Tính là FULL phòng lần 1.<br>
+                - Sau lần FULL phòng lần 1 + 2 tiếng 30 phút (nếu vẫn còn FULL phòng) => Tính là FULL phòng lần 2.<br>
+                - Sau lần FULL phòng lần 2 + 2 tiếng 30 phút (nếu vẫn còn FULL phòng) => Tính là FULL phòng lần 3 và cứ thế.<br>
+            </p>
+            <p><strong>Mục đích:</strong> Tìm ra qui luật FULL phòng của các chi nhánh, giúp cho chi nhánh có sự chuẩn bị tốt nhất.</p>
+        </div>
+
+        <div id="bo-tua" class="section">
+            <h2>Bỏ tua</h2>
+            <p><strong>1. Bỏ tua khách HOTLINE</strong>: Tập trung vào 2 trường hợp quan trọng chính là khách đồng ý chuyển chi nhánh và khách không đồng ý hẹn giờ (tức là bỏ tua luôn).</p>
+                - Khách đồng ý chuyển chi nhánh: Vì chi nhánh đã có nhiều xuất đặt phòng trước, để tối ưu doanh thu thì nhân viên bên tổng đài sẽ giới thiệu khách qua chi nhánh khác.<br>
+                => Bên cạnh đó, cho thấy được đối với chi nhánh khách muốn ban đầu khá là dễ chuyển sang chi nhánh khác
+                => Trường hợp này không khẩn cấp vì giới thiệu khách chuyển sang chi nhánh khác còn là 1 hình thức để cho khách quen với chi nhánh mới của công ty và quảng bá thêm chi nhánh của công ty.<br>
+                - Khách không đồng ý hẹn giờ: Khách không chịu đổi chi nhánh và giờ hẹn phù hợp của nhân viên nên khiến công ty bị mất khách <br>
+                => Trường hợp này khẩn cấp vì nếu để như vậy trong tình trạng lâu dài, sẽ khiến cho khách có cái nhìn không tốt, luôn mặc định là tới chi nhánh công ty sẽ không có phòng => Khả năng đi tới công ty đối thủ cao.<br>
+            </p>
+            <p><strong>2. Bỏ tua khách VÃNG LAI:</strong> Khách VÃNG LAI rất quan trọng vì khách VÃNG LAI không thể thương lượng được sang chi nhánh khác và chỉ bỏ tua.</p>
+            <p>- Khách VÃNG LAI khá quan trọng vì khách thường là người gần nhà do vậy mà sẽ có khả năng khách tới chi nhánh mình nhiều, cũng là một trong những khách VIP.<br>
+            </p>
+
+            <p><strong>Mục đích:</strong><br>
+                - Biết được chi nhánh nào đang trong tình trạng báo động, bị bỏ tua quá nhiều lần khiến cho khách cảm thấy như tới công ty mình sẽ hết phòng. Do vậy mà khách sẽ có khả năng qua luôn công ty đối thủ.<br>
+            </p>
+        </div>
+
+        <div id="bo-tua-tren-FULL-phong" class="section">
+            <h2><strong>1. Tỉ lệ bỏ tua trên FULL phòng</strong></h2>
+            <p><strong>Công thức</strong>: Tỉ lệ bỏ tua trên FULL phòng = \( \frac{\text{Số lượt bỏ tua}}{\text{Số lần FULL phòng}} \).</p>
+            <p><strong>Mục đích:</strong><br>
+                - Chỉ số này cho biết được 1 lần FULL phòng, công ty mất đi bao nhiêu BILL => Cũng tương đương với số phòng nên xây thêm ở mỗi chi nhánh.<br>
+            </p>
+            <h2><strong>2. Sharpe ratio</strong></h2>
+            <p><strong>Công thức</strong>: Sharpe ratio = \( \frac{\text{Lợi nhuận}}{\text{Rủi ro}} \) (vì không có lợi nhuận nên sẽ được thay bằng trung bình doanh thu).</p>
+            <p>Trong đó,<br>
+                - Rủi ro: Là độ lệch chuẩn so với giá trị trung bình. Rủi ro nhiều khi mà các điểm dữ liệu giao động mạnh ở giữa giá trị trung bình, còn rủi ro ít là khi các điểm dữ liệu giao động sát gần giá trị trung bình. <br>
+            <p> Độ lệch chuẩn = Độ rủi ro =  \( \sqrt{\frac{\sum{ (x - \bar{x})^2 }}{n}} \) </p>
+            </p>
+            <p><strong>Diễn giải ý nghĩa hệ số rủi ro:</strong><br>
+                - Hình phía bên trái là hình cho thấy ít rủi ro hơn vì các điểm dữ liệu nằm dao động sát gần với giá trị trung tâm<br>
+                - Hình phía bên phải là hình cho thấy nhiều rủi ro hơn vì các điểm dữ liệu dao động mạnh và lộn xộn quanh giá trị trung bình => Khiến mình không còn an toàn khi các điểm dữ liệu dao động ngẫu nhiên như vậy.<br>
+                - Hệ số rủi ro càng gần về 0 là càng tốt.
+            </p>
+            <iframe src="standard_deviation_meaning.html" width="60%" height="25%"></iframe>
+            <p><strong>Mục đích</strong>: Việc xây phòng sẽ ảnh hưởng tới rủi ro vì liên quan tới vấn đề hoàn vốn hơn. Do vậy xem xét thêm tỉ lệ Sharpe có nghĩa là 1 phần rủi ro sẽ đánh đổi lại bao nhiêu phần lợi nhuận. Sẽ giúp mình có quyết định tốt hơn.</p>
+        </div>
+
+        <div id="ket-qua-FULL-phòng-va-bo-tua" class="section">
+            <h2>Kết quả thống kê số lượng FULL phòng và bỏ tua</h2>
+            <p>Phần kết quả thống kê số lượng FULL phòng và bỏ tua gồm 3 phần chính: </p>
+            <ul>
+                <li><strong>Chi tiết ngày, thời gian FULL phòng của từng chi nhánh:</strong> Tìm ra được qui luật và thời gian FULL phòng của các chi nhánh để chi nhánh có thể chuẩn bị tốt hơn.</li>
+                <li><strong>Số lượng FULL phòng theo thứ và theo ca:</strong> Tổng số lượng FULL phòng trong tháng.</li>
+                <li><strong>Số lượng bỏ tua theo thứ và theo ca:</strong> Bỏ tua từ khách HOTLINE và khách VÃNG LAI. Riêng với khách HOTLINE thường là bỏ tua luôn vào ca tối, do vậy mà chỉ có khách HOTLINE mới có khả năng thương lượng xin đổi chi nhánh
+                => Khách VÃNG LAI quan trọng hơn vì không thể thương lượng qua chi nhánh khác.</li>
+            </ul>
+        </div>
+
+        <div id="thang-1-nam-2025" class="section">
+            <h2>Tháng 1 năm 2025</h2>
+            <p><strong>1. Chi tiết ngày, thời gian FULL phòng của từng chi nhánh:</strong></p>
+            <iframe src="detail_full_room.html" width="150%" height="100%" style="border:none; overflow:auto;"></iframe>
+            <p><strong>2. Số lượng FULL phòng theo thứ và theo ca:</strong></p>
+            <iframe src="number_full_room.html" width="150%" height="600px" seamless></iframe>
+            <p><strong>3. Số lượng bỏ tua theo thứ và theo ca:</strong></p>
+            <iframe src="lose_guest.html" width="150%" height="100%" style="border:none;"></iframe>
+        </div>
+
+        <div id="thang-2-nam-2025" class="section">
+            <h2>Tháng 2 năm 2025</h2>
+            <p>Kết quả tháng 2 năm 2025 sẽ được cập nhật khi DATA nhận được dữ liệu đầy đủ....</p>
+        </div>
+
+        <div id="ket-qua-bo-tua-tren-FULL-phong" class="section">
+            <h2>Kết quả tỉ lệ bỏ tua trên FULL phòng</h2>
+            <p>Phần kết quả tỉ lệ bỏ tua và FULL phòng gồm 2 phần chính: </p>
+            <ul>
+                <li><strong>Tỉ lệ bỏ tua và FULL phòng:</strong> Cho biết được 1 lần FULL phòng thì chi nhánh bỏ mất bao nhiêu BILL => Có khả năng cũng là số phòng xây thêm.
+                Điều kiện chọn số phòng xây thêm là có tỉ lệ này phải trên ít nhất 5 thứ trong tuần (để đảm bảo rằng khi xây thêm phòng thì mình có thể kiếm doanh thu từ nhiều ngày trong thứ, chứ không phải chỉ riêng 2 ngày cao điểm là thứ 6 và thứ 7).</li>
+                <li><strong>Tỉ lệ Sharpe ratio:</strong> Tỉ lệ này cho biết được 1 phần rủi ro sẽ đánh đổi bao nhiêu phần lợi nhuận. Chỉ số này càng lớn thì tốt,
+                nhưng mà nó phải được diễn đều đặn ở các thứ trong tuần. Do vậy, để đảm bao độ an toàn tốt hơn thì trong tuần phải có ít nhất trên 3 thứ là có tỉ lệ sharpe ratio > 2 <br> </li>
+            </ul>
+            <p>=> Kết hợp cả 2 điều kiện trên cùng thỏa, thì suy ra số phòng nên xây thêm với độ an toàn cao.</p>
+        </div>
+
+        <div id="thang-1-2025" class="section">
+            <h2>Tháng 1 - 2025</h2>
+            <p><strong>1.Tỉ lệ bỏ tua trên FULL phòng:</strong></p>
+            <iframe src="lose_guest_over_full.html" width="150%" height="100%" style="border:none; overflow:auto;"></iframe>
+            <p><strong>2. Tỉ lệ Sharpe ratio:</strong></p>
+            <iframe src="sharpe_ratio.html" width="150%" height="100%" style="border:none; overflow:auto;"></iframe>
+        </div>
+
+        <div id="thang-2-2025" class="section">
+            <h2>Tháng 2 - 2025</h2>
+            <p>Kết quả tháng 2 - 2025 sẽ được cập nhật khi DATA nhận được dữ liệu đầy đủ....</p>
+        </div>
+
+        <script>
+            function showSection(id) {
+                // Ẩn tất cả các phần
+                var sections = document.querySelectorAll('.section');
+                sections.forEach(function(section) {
+                    section.classList.remove('active');
+                });
+
+                // Hiển thị phần được chọn
+                var selectedSection = document.getElementById(id);
+                if (selectedSection) {
+                    selectedSection.classList.add('active');
+                }
+            }
+
+            // Hiển thị phần đầu tiên khi tải trang
+            document.addEventListener("DOMContentLoaded", function() {
+                showSection('tong-quan');
+            });
+        </script>
+        <script>
+            const PASSWORD = "icooldata_1234";
+
+            document.addEventListener("DOMContentLoaded", function () {
+                let inputPassword = prompt("Vui lòng nhập mật khẩu để xem báo cáo FULL PHÒNG hàng tháng từ DATA:");
+                if (inputPassword === PASSWORD) {
+                    document.body.style.display = "block";
+                    showSection('tong-quan');
+                } else {
+                    alert("Sai mật khẩu. Bạn không có quyền truy cập.");
+                    document.body.style.display = "none";
+                }
+            });
+        </script>
+
+    </body>
+
+    </html>
+    
