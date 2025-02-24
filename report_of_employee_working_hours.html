@@ -151,6 +151,8 @@
             <p><strong>1. Hệ số tương quan:</strong> Thể hiện mối tương quan giữa 2 thuộc tính. Ví dụ, x tương quan với y => Khi x tăng thì y tăng và khi x giảm thì y giảm.</p>
             <p><strong>Mục đích:</strong> Tìm ra mối tương quan giúp mình tập trung chính xác nhất là nên tăng giảm biến nào để tránh tăng giảm những chỗ không cần thiết => Tiết kiệm.
             Đối với trường hợp thực tế, mục đích là để biết được <strong>Khi tăng giờ công ở thời điểm này thì doanh thu ở thời điểm đó có tăng theo hay không</strong>. </p>
+            <p><strong>Lưu ý:</strong> Đối với giờ công thì sẽ xem xét mối tương quan với trung bình tiền thức ăn thức uống. 
+            TB tiền thức ăn thức uống sẽ bằng tổng doanh thu từ việc khách mua BIA, COMBO, DRINK, FOOD trong các nhóm ngành bán hàng của ICOOL, sau đó chia cho số BILL hiện có tại điểm đó</p>
             <p><strong>Công thức:</strong>  Hệ số tương quan =  \( \frac{\sum{ (x - \bar{x}) (y - \bar{y}) }} {\sqrt{\sum{ (x - \bar{x})^2}\sum{ (y - \bar{y})^2 }}} \) </p>
             <p>Trong đó,<br>
                 - \(  x \): giá trị từng cột số của biến x <br>
@@ -161,7 +163,7 @@
             <p><strong>Diễn giải ý nghĩa hệ só:</strong><br>
                 - Hệ số tương quan có giá trị từ -1 tới 1. <br>
                 - Khi hệ số tương quan = 1 => x tương quan dương mạnh với y => Khi x tăng thì y tăng. Khi hệ số tương quan = -1 => x tương quan dương âm với y => Khi x tăng thì y giảm. Khi hệ số tương quan = 0 => x không tương quan y => Không có mối quan hệ giữa x và y.<br>
-                - Hệ số tương quan càng gần về 1 hoặc trừ 1 thì càng tốt. Hệ số tương quan càng gần về 0 thì càng không tốt.
+                - Hệ số tương quan càng gần về 1 hoặc - 1 thì càng tốt. Hệ số tương quan càng gần về 0 thì càng không tốt.
             </p>
             <iframe src="correlation_coefficient_meaning.html" width="60%" height="25%"></iframe>
             <p><strong>2. Hồi qui tuyến tính:</strong> Thể hiện khi tăng một giờ công thì trung bình tiền thức ăn thức uống tăng lên bao nhiêu bằng việc sử dụng hệ số góc của phương trình: y = ax + b. Trong đó, a là hệ số góc. </p>
@@ -177,7 +179,11 @@
 
         <div id="ket-qua-gio-cong-tren-bill" class="section">
             <h2>Kết quả giờ công trên BILL</h2>
-            <p>Nội dung Kết quả giờ công trên BILL...</p>
+            <p>Kết quả giờ công trên BILL hàng tháng sẽ bao gồm 2 phần chính là:</p>
+            <ul>
+                <li>Kết quả bằng biểu đồ</li>
+                <li>Nhận xét các chi nhánh đang chưa đạt mục tiêu là sáng không quá 5, tối không dưới 3.</li>
+            </ul>
         </div>
 
         <div id="thang-1-nam-2025" class="section">
@@ -194,14 +200,23 @@
 
         <div id="ket-qua-tuong-quan" class="section">
             <h2>Kết quả mối tương quan</h2>
-            <p>Nội dung Kết quả mối tương quan...</p>
+            <p>Kết quả mối tương quan giữa giờ công và trung bình tiền thức ăn, thức uống sẽ bao gồm 4 phần chính là:</p>
+            <ul>
+                <li>Biểu đồ mối tương quan: Nhận xét được khung giờ nào chi nhánh đang có mối tương quan giữa giờ công và trung bình tiền thức ăn.</li>
+                <li>Biểu đồ đường hồi qui tuyến tính: Dễ dàng thấy được mối tương quan đó.</li>
+                <li>Biểu đồ trung bình tiền thức ăn thức uống sẽ tăng lên bao nhiêu khi tăng 1 giờ công.</li>
+                <li>Kết luận cuối cùng 🎯.</li>
+            </ul>
         </div>
 
         <div id="thang-1-2025" class="section">
             <h2>Tháng 1 - 2025</h2>
+            <p><strong>1. Biểu đồ mối tương quan:</strong></p>
             <iframe src="correlation_coefficient.html" width="150%" height="100%"></iframe>
+            <p><strong>2. Biểu đồ đường hồi qui tuyến tính:</strong></p>
             <iframe src="linear_regression_weekday.html" width="150%" height="50%"></iframe>
             <iframe src="linear_regression_weekend.html" width="150%" height="60%"></iframe>
+            <p><strong>3. Biểu đồ trung bình tiền thức ăn thức uống sẽ tăng lên bao nhiêu khi tăng 1 giờ công:</strong></p>
             <iframe src="working_to_money.html" width="150%" height="120%"></iframe>
         </div>
 
