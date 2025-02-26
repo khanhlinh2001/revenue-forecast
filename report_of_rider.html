@@ -86,13 +86,6 @@
                 <li>
                     <a onclick="showSection('Map các cuốc xe')">Map các cuốc xe</a>
                 </li>
-                <li>
-                    <a onclick="showSection('ket-luan')">Kết luận</a>
-                    <ul>
-                        <li><a onclick="showSection('thang-1-2025')">Tháng 1 - 2025</a></li>
-                        <li><a onclick="showSection('thang-2-2025')">Tháng 2 - 2025</a></li>
-                    </ul>
-                </li>
             </ul>
         </div>
 
@@ -102,7 +95,7 @@
             <ul>
                 <li><strong>Map của cuốc xe:</strong> Thể hiện các điểm khách bắt xe từ đâu đến tới ICOOL, vẽ bán kính 3km xung quanh các chi nhánh của ICOOL để thấy được dễ dàng những phạm vi ngoài bán kính có nhiều không
                 => Xem xét để BGD đưa ra quyết định mở địa điểm mới.</li>
-                <li><strong>Kết luận:</strong> Đưa những kết luận tóm gọn và recommend địa điểm theo từng tháng của DATA.</li>
+                <li><strong>Kết luận:</strong> Đưa những kết luận tóm gọn từng tháng và recommend địa điểm theo thuật toán K-means Clustering trong mô hình máy học.</li>
             </ul>
             <p>Bản đồ các chi nhánh ICOOL:</p>
             <iframe src="my_map_icool.html" width="150%" height="100%"></iframe>
@@ -113,24 +106,63 @@
             <p><strong>1. Biểu đồ chi tiết tọa độ cuốc xe:</strong></p>
             <p>🔍 Có thể tương tác với hình dễ dàng, chọn các khung thời gian phù hợp vào nhu cầu.</p>
             <iframe src="map_total.html" width="150%" height="120%"></iframe>
+            <p><strong>Nhận xét:</strong></p>
+            <p>Tháng 1 - 2025, một số điểm nằm ngoài tất cả các chi nhánh là Gò Vấp (Đ.Dương Quảng Hàm, Lê Đức Thọ), 
+            Hiệp Bình Chánh - Tp Thủ Đức (nằm trong hẻm đường Phạm Văn Đồng),
+            Bình Qưới - Bình Thạnh, Quận 9 (Đ.Nguyễn Xiển, Hoàng Hữu Nam).</p>
             <p><strong>2. Biểu độ phân cụm và đề xuất địa điểm:</strong></p>
             <p>🔍 Có thể tương tác với hình dễ dàng, chọn các khung thời gian phù hợp vào nhu cầu.</p>
             <iframe src="map_clusters_1.html" width="150%" height="120%"></iframe>
+            <p><strong>Nhận xét:</strong></p>
+            <p>10 cụm ở tp.HCM máy học đề xuất:</p>
+        <table border="1">
+            <tr>
+                <th>Quận/Huyện</th>
+                <th>Điểm tối ưu</th>
+            </tr>
+            <tr>
+                <td>Quận 9</td>
+                <td>Gần Đ.Lâm Viên</td>
+            </tr>
+            <tr>
+                <td>Quận 2</td>
+                <td>Đ. Mai Chí Thọ giao với Đ. Đỗ Xuân Hợp</td>
+            </tr>
+            <tr>
+                <td>Quận 7</td>
+                <td>Đ. Mai Văn Vinh</td>
+            </tr>
+            <tr>
+                <td>Quận 8</td>
+                <td>Đ. Trương Đinh Hội</td>
+            </tr>
+            <tr>
+                <td>Quận Bình Tân</td>
+                <td>Đ. Chiến Lược</td>
+            </tr>
+            <tr>
+                <td>Quận Tân Phú</td>
+                <td>Đ. Tây Thạnh</td>
+            </tr>
+            <tr>
+                <td>Quận 12</td>
+                <td>Hẻm Đỗ Mười</td>
+            </tr>
+            <tr>
+                <td>Quận Gò Vấp</td>
+                <td>Hẻm Nguyễn Thái Sơn</td>
+            </tr>
+            <tr>
+                <td>Quận Tân Bình</td>
+                <td>Gần Bộ Tư Lệnh Quân khu 7</td>
+            </tr>
+            <tr>
+                <td>TP. Thủ Đức</td>
+                <td>Đ. Phạm Văn Đồng</td>
+            </tr>
+        </table>
+            <p><strong>Phân cụm gắn thêm tọa độ chi nhánh hiện có:</strong></p>
             <iframe src="map_clusters_2.html" width="150%" height="120%"></iframe>
-        </div>
-
-        </div>
-
-        <div id="thang-1-2025" class="section">
-            <h2>Tháng 1 - 2025</h2>
-            <p>Tổng quát tháng 1 năm 2025, nhìn chung tất cả các chi nhánh ở HCM. Mặc dù điểm này nằm ngoài bán kính của chi nhánh kia nhưng đa số sẽ nằm trong vòng tròn của chi nhánh khách.
-            Một số điểm nằm ngoài tất cả các chi nhánh nhiều nhất là khu vực GÒ VẤP như đường Dương Quảng Hàm, Nguyễn Văn Lượng;
-            một số điểm nằm ở khu vực Hiệp Bình Chánh (Thủ Đức); Bình Qưới (Bình Thạnh); khúc Nguyễn Xiển (Quận 9).</p>
-        </div>
-
-        <div id="thang-2-2025" class="section">
-            <h2>Tháng 2 - 2025</h2>
-            <p>Kết quả tháng 2 - 2025 sẽ được cập nhật khi DATA nhận được dữ liệu đầy đủ....</p>
         </div>
         <script>
             function showSection(id) {
